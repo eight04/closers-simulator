@@ -173,6 +173,7 @@ function formatCoins(coins) {
 
 <footer>
   <a href="https://github.com/eight04/closers-simulator">eight04/closers-simulator</a>
+  <p>最後更新: __BUILD_DATE__</p>
 </footer>
 
 <style>

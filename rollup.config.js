@@ -8,7 +8,7 @@ import iife from "rollup-plugin-iife";
 import output from "rollup-plugin-write-output";
 import {copy} from '@web/rollup-plugin-copy';
 import json from '@rollup/plugin-json';
-// import re from "rollup-plugin-re";
+import re from "rollup-plugin-re";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -20,6 +20,13 @@ export default {
 		dir: 'docs'
 	},
 	plugins: [
+    re({
+      patterns: [{
+        test: /__BUILD_DATE__/,
+        replace: new Date().toLocaleDateString("zh-TW")
+      }]
+    }),
+    
 		svelte({
       compilerOptions: {
         dev: !production
@@ -44,13 +51,6 @@ export default {
       autoWrap: [/\.worker\.mjs/],
       useModuleWorker: false
     }),
-    
-    // re({
-    //   patterns: [{
-    //     test: /{type:\s*"module"}/,
-    //     replace: "{}"
-    //   }]
-    // }),
     
     iife(),
     
