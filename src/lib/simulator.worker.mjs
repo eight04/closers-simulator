@@ -24,16 +24,16 @@ function simulateOnce({currentLevel, targetLevel, hasLuck, maxEnhancementCount, 
   let pity = 0;
   let i = 0;
   while (level < targetLevel) {
-    i++;
-    if (maxEnhancementCount != null && i >= maxEnhancementCount) {
-      r.failed = 1;
-      return r;
-    }
     if (rateTable[level].pity != null && pity >= rateTable[level].pity) {
       level++;
       pity = 0;
       continue;
     }
+    if (maxEnhancementCount != null && i >= maxEnhancementCount) {
+      r.failed = 1;
+      return r;
+    }
+    i++;
     r[level] = (r[level] || 0) + 1;
     const rateInfo = rateTable[level];
     const rand = Math.random() * 10000;
