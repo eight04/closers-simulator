@@ -1,0 +1,50 @@
+{
+  "name": "closers-simulator",
+  "version": "0.0.0",
+  "description": "Enhance simulator for the Korean online game Closers",
+  "scripts": {
+    "test": "eslint .",
+    "dev": "run-p build-dev start",
+    "build": "shx rm -rf docs && rollup -c",
+    "build-dev": "rollup -cw",
+    "build-data": "node tools/build-data.mjs",
+    "start": "web-dev-server --open --watch --root-dir=docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eight04/closers-simulator.git"
+  },
+  "type": "module",
+  "keywords": [
+    "closers"
+  ],
+  "author": "eight04",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/eight04/closers-simulator/issues"
+  },
+  "homepage": "https://github.com/eight04/closers-simulator#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.28.5",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@surma/rollup-plugin-comlink": "https://github.com/eight04/rollup-plugin-comlink/tarball/dev",
+    "@web/dev-server": "^0.4.6",
+    "@web/rollup-plugin-copy": "^0.5.1",
+    "eslint": "^9.39.2",
+    "eslint-plugin-svelte": "^3.13.1",
+    "npm-run-all": "^4.1.5",
+    "papaparse": "^5.5.3",
+    "rollup": "^4.54.0",
+    "rollup-plugin-css-only": "^4.5.5",
+    "rollup-plugin-iife": "^0.7.1",
+    "rollup-plugin-re": "^1.0.7",
+    "rollup-plugin-svelte": "^7.2.3",
+    "rollup-plugin-write-output": "^0.2.1",
+    "shx": "^0.4.0",
+    "sirv-cli": "^3.0.1",
+    "svelte": "^5.46.0"
+  }
+}

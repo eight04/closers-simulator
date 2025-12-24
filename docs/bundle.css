@@ -1,0 +1,49 @@
+
+body {
+  font-size: 16px;
+  font-family: sans-serif;
+  margin: 2em auto;
+  padding: 0 5px;
+  max-width: 600px;
+}
+input, button, select {
+  font-size: .95em;
+  font-family: inherit;
+  padding: .3em .6em;
+}
+footer.svelte-6t5lyo {
+  text-align: center;
+  margin: 1.2em;
+}
+.container.svelte-6t5lyo {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: .6em 1.2em;
+  place-items: center stretch;
+  margin: .6em 0;
+}
+.form-group.svelte-6t5lyo {
+  display: contents;
+
+  &:has([type="checkbox"]:where(.svelte-6t5lyo)) {
+    display: block;
+    grid-column: span 2;
+  }
+}
+table.svelte-6t5lyo {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  thead:where(.svelte-6t5lyo), tfoot:where(.svelte-6t5lyo) {
+    background: #f0f0f0;
+    font-weight: bold;
+  }
+  th:where(.svelte-6t5lyo), td:where(.svelte-6t5lyo) {
+    border: 1px solid #ccc;
+    padding: .4em .6em;
+  }
+  td:where(.svelte-6t5lyo) {
+    text-align: right;
+  }
+}
+
