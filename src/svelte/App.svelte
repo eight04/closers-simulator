@@ -3,7 +3,9 @@ import {getStore} from "../lib/store.mjs";
 
 import {simulator} from "../lib/simulator.worker.mjs";
 
-import {consumeFuels, consumeCoins} from "../lib/data.js";
+import {consumeFuels, consumeCoins, MAX_LEVEL} from "../lib/data.js";
+
+const PROTECTION_START_LEVEL = 20;
 
 let currentLevel = getStore("currentLevel", 0);
 let targetLevel = getStore("targetLevel", 30);
@@ -56,7 +58,7 @@ async function startSimulation() {
     simulationResult.totalCoins += coins;
     simulationResult.totalFuels += fuels;
     simulationResult.totalEnhance += value;
-    if (Number(key) >= 17 && simulationResult.hasProtection) {
+    if (Number(key) >= PROTECTION_START_LEVEL && simulationResult.hasProtection) {
       simulationResult.totalProtection += value;
     }
     simulationResult.table.push([key, value, coins, fuels]);
@@ -93,7 +95,7 @@ function formatCoins(coins) {
       目標等級
     </span>
     <select bind:value={$targetLevel}>
-      {#each Array(30).fill(0).map((_, i) => i + 1) as level (level)}
+      {#each Array(MAX_LEVEL).fill(0).map((_, i) => i + 1) as level (level)}
         <option value={level}>{level}</option>
       {/each}
     </select>
