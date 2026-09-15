@@ -5,7 +5,7 @@ import {simulator} from "../lib/simulator.worker.mjs";
 
 import {consumeFuels, consumeCoins, MAX_LEVEL} from "../lib/data.js";
 
-const PROTECTION_START_LEVEL = 20;
+const PROTECTION_START_LEVEL = 18;
 
 let currentLevel = getStore("currentLevel", 0);
 let targetLevel = getStore("targetLevel", 30);
