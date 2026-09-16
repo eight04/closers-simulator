@@ -7,13 +7,15 @@ import {consumeFuels, consumeCoins, MAX_LEVEL} from "../lib/data.js";
 
 const PROTECTION_START_LEVEL = 18;
 
+const groupedConsumeCoins = Object.groupBy(consumeCoins, item => item.category);
+
 let currentLevel = getStore("currentLevel", 0);
 let targetLevel = getStore("targetLevel", 30);
 let maxEnhancementCount = getStore("maxEnhancementCount", 5000);
 let simulationCount = getStore("simulationCount", 100);
 let hasLuck = getStore("hasLuck", false);
 let hasProtection = getStore("hasProtection", false);
-let itemName = getStore("itemName", "none");
+let itemHash = getStore("itemHash", "none");
 
 let running = $state(false);
 let simulationResult = $state(null);
@@ -27,7 +29,7 @@ async function startSimulation() {
     data: null,
     hasLuck: $hasLuck,
     hasProtection: $hasProtection,
-    coinTable: consumeCoins.find(item => item.name === $itemName) || null,
+    coinTable: consumeCoins.find(item => item.hash === $itemHash) || null,
     table: [
       ["強化等級", "強化次數", "所需金幣", "所需燃料"]
     ],
@@ -122,10 +124,14 @@ function formatCoins(coins) {
     <span class="form-label">
       計算強化費
     </span>
-    <select bind:value={$itemName}>
+    <select bind:value={$itemHash}>
       <option value="none">不計算</option>
-      {#each consumeCoins as {name} (name)}
-        <option value={name}>{name}</option>
+      {#each Object.entries(groupedConsumeCoins) as [category, items] (category)}
+        <optgroup label={category}>
+          {#each items as {name, hash} (name)}
+            <option value={hash}>{name}</option>
+          {/each}
+        </optgroup>
       {/each}
     </select>
   </label>

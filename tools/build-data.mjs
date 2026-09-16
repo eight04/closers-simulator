@@ -31,8 +31,10 @@ for (const file of await readdir('data')) {
   const items = [];
   // list items
   for (let i = 1; i < data[0].length; i++) {
+    const hash = data[0][i];
+    const [category, name] = hash.split(",");
     items.push({
-      name: data[0][i],
+      category, name, hash
     });
   }
   // coins data
