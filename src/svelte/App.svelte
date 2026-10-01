@@ -87,7 +87,7 @@ function formatCoins(coins) {
       強化對象等級
     </span>
     <select bind:value={$currentLevel}>
-      {#each Array(30).fill(0).map((_, i) => i) as level (level)}
+      {#each Array(MAX_LEVEL).fill(0).map((_, i) => i) as level (level)}
         <option value={level}>{level}</option>
       {/each}
     </select>
